@@ -1,0 +1,45 @@
+body {
+  background-color: #2c2c54;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  
+}
+.n1 {
+  bottom: 170px;
+  color: #6f6fd3;
+}
+
+.n2 {
+  bottom: 80px;
+    color: #ecf0f1;
+}
+
+.n3 {
+  bottom: 0;
+  color: #e74c3c;
+}
+
+h2 {
+  position: fixed;
+  font-size: 65px;
+  font-family: "Comic Sans MS", sans-serif;
+  right: 30px;
+  font-weight: 700;
+}
+
+.scene-svg {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    height: 90%;
+    right: 0;
+}
+
+.monitor {
+   width:20%;
+   position: absolute;
+   left: 50%;
+   top: 23%;
+}

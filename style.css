@@ -6,24 +6,23 @@ body {
 }
 .n1 {
   bottom: 170px;
-  color: #6f6fd3;
 }
 
 .n2 {
   bottom: 80px;
-    color: #ecf0f1;
+  right: 130px;
 }
 
 .n3 {
   bottom: 0;
-  color: #e74c3c;
 }
 
 h2 {
-  transform: translateX(400px);
+  /* transform: translateX(400px); */
   position: fixed;
   font-size: 65px;
-  font-family: "Comic Sans MS", sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  color: #6f6fd3;
   right: 30px;
   font-weight: 700;
 }

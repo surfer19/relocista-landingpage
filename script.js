@@ -1,6 +1,5 @@
 //onload
-window.onload=function() {
-  console.log('ahoj');
+window.onload=function() {  
   // let targets = Array(54).fill(0).map((e,i)=>i+1).map((x) => '.path-' +x);
   // console.log('targetss', targets);
   let pathAnimation = anime({
@@ -51,7 +50,7 @@ window.onload=function() {
 
   let logo = anime({
     targets: 'h2',
-    opacity: [0.2, 1],    
+    opacity: [0.4, 1],    
     duration: 1500,
     loop: true,
     easing: 'easeInOutQuad',

@@ -15,14 +15,28 @@ window.onload=function() {
     }
   });
     
-  let pathAnimationMoon = anime({
+  // Create a timeline with default parameters
+  anime({
     targets: '.moon',
-    opacity: [0.4, 0.6],
-    easing: 'easeInOutQuad',
-    duration: 2000,
-    direction: 'alternate',
-    loop: true
+    opacity: [0,1],
+    duration: 14000,
+    translateX: [
+      { value: 700, duration: 0},
+      { value: 400, duration: 7000 },
+      { value: 200, duration: 7000 },
+      { value: -20, duration: 7000 }
+    ],
+    translateY: [
+      { value: 50, duration: 0 },
+      { value: 0, duration: 7000 },
+      { value: -30, duration: 7000 },
+      { value: -10, duration: 7000 }
+    ],
+    easing: 'linear',
+    loop: true,
+    direction: 'alternate'
   });
+
 
   let pathAnimationLamp = anime({
     targets: '.lamp',
@@ -35,59 +49,142 @@ window.onload=function() {
     direction: 'alternate'
   });
 
+  let logo = anime({
+    targets: '#RELOCISTA',
+    opacity: [0.4, 1],
+    duration: 1500,    
+    loop: true,
+    easing: 'easeInOutQuad',
+    direction: 'alternate'
+  });
+  
+  anime({
+    targets: '.n1',
+    duration: 500,
+    delay: 1000,
+    translateX: [400, 0],
+    opacity: [0, 1],
+    loop: false,
+    easing: 'easeOutElastic',
+    direction: 'alternate',
+    complete: function(daco, err) {
+      anime({
+        targets: '.n2',
+        duration: 500,
+        translateX: [400, 0],
+        opacity: [0, 1],
+        loop: false,
+        easing: 'easeOutElastic',
+        direction: 'alternate',
+        complete: function(daco, err) {
+          anime({
+            targets: '.n3',
+            translateX: [400, 0],
+            duration: 500,
+            opacity: [0, 1],            
+            loop: false,
+            easing: 'easeOutElastic',
+            direction: 'alternate'
+          });
+        }
+      });
+    }
+  });
 
-  async function animateWindows() {
+  async function hideWindows() {
     const initialObj = {
       fill: '#000',
-      duration: 1000,
+      duration: 500,
+      loop: false,
+      easing: 'linear',
+      direction: 'normal'
+    }
+    await anime({
+      delay: 500,
+      targets: '.window-1',
+      fill: '#000',
+      duration: 500,
+      loop: false,
+      easing: 'linear',
+      direction: 'normal'
+    }).finished
+    
+    var delay = 0;
+    for (let i = 1; i < 16; i++) {
+      await anime(Object.assign(initialObj, {
+        delay: delay,
+        targets: '.window-' + getRandomInt(1, 15) //i
+      }))
+      delay += getRandomInt(0, 500)
+    }
+  };
+  hideWindows();
+  console.log('hideWindows()')
+  var hidden = true
+
+  setInterval(function(){ 
+    showWindows();
+    hideWindows();
+    // if (hidden == true) {
+    //   console.log('SHOW')
+    //   hidden = false;
+    //   return showWindows();
+    // }
+    // console.log('HIDE')
+    // hidden = true;
+    // return hideWindows();
+   }, 3000);
+
+  
+  async function showWindows() {    
+    const initialObj = {
+      fill: '#f1c40f',
+      duration: 500,
       loop: false,
       easing: 'linear',
       direction: 'normal'
     }
     await anime({
       delay: 1000,
-      targets: '.window-1',
-      fill: '#000',
-      duration: 1000,
+      targets: pickRandomValueFromArr('.window-', 15),
+      fill: '#f1c40f',
+      duration: 500,
       loop: false,
       easing: 'linear',
       direction: 'normal'
     }).finished
 
-    await anime(Object.assign(initialObj, {
-      delay: 0,
-      targets: '.window-2',
-    }))
-    await anime(Object.assign(initialObj, {
-      delay: 1200,
-      targets: '.window-3',
-    }))
-    await anime(Object.assign(initialObj, {
-      delay: 1400,
-      targets: '.window-4',
-    }))
-    await anime(Object.assign(initialObj, {
-      delay: 2000,
-      targets: '.window-5',
-    }))
-    await anime(Object.assign(initialObj, {
-      delay: 2200,
-      targets: '.window-6',
-    }))
+    for (let i = 0; i < 5; i++) {
       await anime(Object.assign(initialObj, {
-      delay: 2600,
-      targets: '.window-7',
-    }))
-    await anime(Object.assign(initialObj, {
-      delay: 3000,
-      targets: '.window-8',
-    }))
+        delay: getRandomInt(1000, 7000),
+        targets: pickRandomValueFromArr('.window-', 15)
+      }))
+    }
 
-    await anime(Object.assign(initialObj, {
-      duration: 100,
-      delay: 5000,
-      targets: '.window-9',
-    }))
+
   };
-  animateWindows();
+  /**
+   * Get a random integer between `min` and `max`.
+   * 
+   * @param {number} min - min number
+   * @param {number} max - max number
+   * @return {number} a random integer
+   */
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+
+  function pickRandomValueFromArr(concatString, numberOfSamples) {
+    const arr = []
+    for (let i = 0; i < numberOfSamples; i++) {
+      arr.push(concatString + (i + 1))
+    }
+    randomElement = arr.randomElement()
+    console.log('randomElement', randomElement)
+
+    return randomElement
+  }
+  Array.prototype.randomElement = function () {
+    return this[Math.floor(Math.random() * this.length)]
+  }
 };

@@ -1,5 +1,6 @@
 body {
   background-color: #2c2c54;
+  font-family: 'Open Sans', sans-serif;
   margin: 0;
   padding: 0;
   overflow: hidden; 
@@ -21,10 +22,27 @@ h2 {
   /* transform: translateX(400px); */
   position: fixed;
   font-size: 65px;
-  font-family: 'Open Sans', sans-serif;
   color: #6f6fd3;
   right: 30px;
   font-weight: 700;
+}
+
+span, span > a {
+  color: #6f6fd3;
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 600;
+  text-decoration: none;
+}
+span > a {
+  color: #e9ebee;
+  font-weight: bold;
+}
+
+footer {
+  position: fixed;
+  bottom: 10px;
+  left: 40px;
 }
 
 .scene-svg {

@@ -61,6 +61,23 @@ footer {
    top: 23%;
 }
 
+@media (max-width: 768px) {
+  .svg-scene {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translate(13%,-35%);
+    transform: translate(13%,-35%);
+  }
+  h2 {
+    position: initial;
+    font-size: 40px;
+    right: 0;
+    text-align: center;    
+  }
+  
+}
+
 /* @keyframes float {
 	0% {
 		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);

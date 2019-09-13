@@ -48,10 +48,10 @@ window.onload=function() {
     direction: 'alternate'
   });
 
-  let logo = anime({
+  let title = anime({
     targets: 'h2',
-    opacity: [0.4, 1],    
-    duration: 1500,
+    opacity: [0.3, .7],
+    duration: 1200,
     loop: true,
     easing: 'easeInOutQuad',
     direction: 'alternate'
